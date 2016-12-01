@@ -4,6 +4,12 @@
 
 \usepackage{mathtools}
 \usepackage{epigraph}
+\usepackage{amsfonts}
+
+\newcommand{\goesto}{\rightarrow}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\abs}[1]{\left\| #1 \right\|}
+\newcommand{\conj}[1]{\overline{#1}}
 
 \begin{document}
 \maketitle
@@ -20,13 +26,183 @@ We start with an informal definition of Natural numbers, recall that we can put 
 
 \chapter{Linear Algebra}
 
-A vector space $V$ over a filed $\mathbb{f}$ is an abelian group $(V,+)$, for which a binary product, $(a,v) \rightarrow av$, of $ \mathbb{f} \times V$ into $V$ is defined satisfying the following axioms for all $a,b \in \mathbb{F}$ and $u,v \in V$
+A vector space $V$ over a filed $\mathbb{F}$ is an abelian group $(V,+)$, for which a binary product, $(a,v) \rightarrow av$, of $ \mathbb{F} \times V$ into $V$ is defined satisfying the following axioms for all $a,b \in \mathbb{F}$ and $u,v \in V$
 
 \begin{itemize}
     \item $1v = v$
     \item $(ab)v = a(bv) $
     \item $(a + b)v = av + bv$ and $a(v+u) = av + au$
 \end{itemize}
+
+The elements of $V$ are usually referred as vectors; the elements of the underlying field as scalars.
+
+Examples of vector spaces:
+
+\begin{itemize}
+	\item $\mathbb{F}^n $ the space of all F-valued n-tuples with addition and multiplication by scalars defined pointwise. To be able to differentiate between row and column spaces we will denote by the following $\mathbb{F}_c^n$ or $\mathbb{F}_r^n$.
+	\item $M(n,m;\mathbb{F})$ are the default matrices with entries from F. 
+\end{itemize}
+
+Definition: A map $\phi: V \rightarrow W$ is linear if for all scalars $a,b$ and vectors $v_1, v_2$, we have
+\begin{equation*}
+	\phi(av_1 + b v_2) = a \phi(v_1) + b \phi(v_2)
+\end{equation*}
+
+A map $\phi$ is an isomorphism if it is both bijective and linear.
+
+We observe that the relation of being isomorphic is an equivalence relation.
+
+Definition: A (vector) subspace of a vector space $V$ is a subset that is closed under the operations of addition and multiplication by scalars inherited from $V$.
+ 
+An interesting subspace of a vector space is to take $W_j$ be a family of subsets, then we have that the sum of subspaces, is the set
+
+\[
+\sum W_j = \bigcup_{J_1 \subset J} \left\lbrace v : v = \sum_{j \in J_1} v_j, v_j \in W_j \right\rbrace 
+\]
+
+\subsection{Quotient spaces}
+
+A subspace $W$ of a vector space $V$ defines an equivalence relation in $V$
+
+\[
+	x \equiv y  \mod W
+\]
+
+This equivalence relation partitions $V$  into equivalence classes, called the cosets of $W$ in $V$. For $ x \in V$, the coset of $W$ that contains $x$ is the set $\tilde{x} = x + W$ the \textit{translate} of x by W.
+
+Proposition 
+\[
+	\tilde{x} = x + W
+\]
+
+Consider an  arbitrary element of $b$ of $ \tilde{x} $,
+\begin{align*}
+	b \equiv x \mod W \\
+	b - x = w_1
+\end{align*}
+For some $w_1$ in $W$, so that $b \in x + W$. The other side is similar.
+
+We define the quotient space $V/W$ to be the space whose elements are the cosets of $W$ in $V$
+
+Definition \textbf{Direct Sums}
+If $V_1, \ldots, V_k$ are vector spaces over $\mathbb{F}$, the (formal) direct sum
+\[
+	\oplus_1^k V_j 
+\]
+
+is the set $ \lbrace (v_1,\ldots,v_k) : v_j \in V \rbrace $
+
+
+\chapter{Complex Analysis}
+
+The central objects are functions from the complex plane to itself
+\[
+	f: \mathbb{C} \goesto \mathbb{C}
+\]
+
+A more interesting anotation is that $f$ is differentiable in the complex sense. This condition is called holomorphicity, and it shapes all of complex analysis.
+
+A function $f:\mathbb{C} \goesto \mathbb{C}$ is holomorphic at the point $z \in \mathbb{C}$ if the limit
+\[
+	\lim_{h \goesto 0} \frac{f(z+h)-f(z)}{h} \quad h \in \CC
+\]
+
+This encompasses a multiplicity of conditions: so to speak, one for each angle that $h$ can approach zero.
+
+Our main goals is to observe the following properties.
+
+\begin{itemize}
+	\item Contour Integration. If $f$ is holomorphic in $\omega$, then for appropriate closed paths in $\omega$.
+	\[
+		\int_\gamma f(z) dz = 0
+	\]
+	\item Regularity. If $f$ is holomorphic, then $f$ is indefinitely differentiable
+	\item Analytic continuation. If $f$ and $g$ are holomorphic functions in $\omega$ which are equal in an arbitrary small disc in $\omega$, then $f = g$ everywhere in $\omega$
+\end{itemize}
+
+Basic Properties
+
+A complex number takes the form $z = x + iy$ where $x,y $ are real numbers and $i$ is an imaginray number that satisfies $i^2 = -1$, we denote $x = \operatorname{Re}(z), y = \operatorname{Im}(z) $, we observe that the real numbers are precisely those complex numbers for which the imaginary part is zero.
+An important observation is the multiplication of two complex numbers:
+
+\begin{align*}
+	z_1 z_2 &= (x_1 + i y_1)(x_2 + i y_2) \\
+			&= (x_1x_2 - y_1y_2) + i(x_1y_2 + y_1x_2)
+\end{align*}
+
+We observe that addition correspond naturally to the addition of two vectors, while multiplication consist of a rotation plus a dilatation, multiplication of $i$ is a rotation of $\frac{\pi}{2}$. We define, the absolute value of a complex number $z$ by
+\[
+	|z| = (x^2 + y^2)^{\frac{1}{2}}
+\]
+
+We observe then $|z|$ consists of the distance from the origin to the point $(x,y)$.
+
+We observe that the triangle inequality holds
+
+\[
+	| z + w | <= |z| + |w| \quad \forall z,w \in \CC
+\]
+
+We observe the above since
+
+\begin{align*}
+| z + w |^2 &= (z + w)(\conj{z + w}) = (z+w)(\conj{z} + \conj{w}) \\
+&= |z|^2 + w \conj{z} + z \conj{w} + |w|^2 \\
+&= |z|^2 + w \conj{z} + \conj{w \conj{z}} + |w|^2 
+\end{align*}
+Now, we make the observation that 
+\[
+Re(a) = \frac{a + \conj{a}}{2}
+\]
+\begin{align*}
+| z + w |^2 &= (z + w)(\conj{z + w}) = (z+w)(\conj{z} + \conj{w}) \\
+			&= |z|^2 +2 \operatorname{Re}(w \conj{z}) + |w|^2 \\
+			&\leq |z|^2 + 2 |w| |\conj{z} | + |w|^2 \\
+			&= (|z| + |w|)^2
+\end{align*}
+
+The reverse triangle inequality is
+
+\[
+	||z|-|w|| \leq |z - w|
+\]
+
+and is proven as:
+with the triangle inequality we have
+\begin{align*}
+	|z| + |w-z| \geq |z + w - z| = |w| \\
+	|w| + |z-w| \geq |w + z - w | = |z| 
+\end{align*}
+and we observe then
+\begin{align*}
+	| w - z | \geq |w| - |z| \\
+	| z - w | \geq |z| - |w|
+\end{align*}
+from absolute values we know that $ | w - z| = | z - w| $, and if $ t \geq a $ and $ t \geq -a$, implies $ t \geq |a| $, so that
+\begin{align*}
+	| z - w | \geq | |w| - |z| |
+\end{align*}
+
+We already have used $\conj{z}$ to denote the complex conjugate of $z$. we observe that
+
+\begin{align*}
+z\conj{z} = |z|^2 \quad \implies \frac{1}{z} = \frac{\conj{z}}{|z|^2}
+\end{align*}
+
+Any non-zero complex number $z$ can be written in polar form
+
+\[
+	z = re^{i \theta} 
+\]
+From here, we obtain the observation that if $z$ and $w$ are complex numbers, we have that their multiplication is:
+\[
+ zw = rse^{ i (\theta + \phi)
+\]
+so multiplication by a complex number corresponds to a homothety in the plane.
+
+\subsection{Convergence}
+
+
 
 
 
