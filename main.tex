@@ -10,6 +10,8 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\abs}[1]{\left\| #1 \right\|}
 \newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\setbraces}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
 
 \begin{document}
 \maketitle
@@ -22,7 +24,38 @@ First, a word about sets. These are the most primitive objects in mathematics. W
 
 \epigraph{By an aggregate [set] we are to understand any collection into a whole M of definite and separate objects m of our intution or our thought. These objects we call the elements of M}{\textit{Cantor}}
 
-We start with an informal definition of Natural numbers, recall that we can put this in stone observations, using the Peano axioms
+We start with an informal definition of Natural numbers, recall that we can put this in stone observations, using the Peano axioms.
+
+\chapter{Vector Calculus}
+
+\subsection{Stokes Theorem}
+Stokes'theorem relates the line integral of a vector field around a simple closed curve $C$ in $\RR^3$ to an integral over a surface $S$ for wic $C$ is the boundary.
+
+\textbf{Stokes Theorem for Graph}
+Consider $S$ that is the graph of a function $f(x,y)$ so that is parametrized by
+
+\[
+\begin{cases}
+	x = u \\
+	y = v \\
+	z = f(u,v)
+\end{cases}
+\]
+
+\textbf{Stokes' Theorem for Graphs} Let $S$ be the oriented surface by a $C^2$ function $z = f(x,y)$, where $(x,y) \in D$, a region to which Green's theorem applies, and let $\textbf{F}$ be a $C^1$ vector field on $S$. Then if $\partial S$ denotes the oriented boundary curves of $S$ as just defined, we have
+
+\[
+	\iint_S (\nabla \times \textbf{F}) \cdot d \textbf{S} = \int_{\partial S} \textbf{F} \cdot d \textbf{s}
+\]
+
+
+\textbf{Stokes' Theorem for Parametrized surfaces}
+
+Let $S$ be an oriented surfaces defined by a one-to-one parametrization $\Phi :D \subset \RR^2 \goesto S$, where $D$ is a region to which Green's theorem applies. Let $\partial S$ denote the oriented boundary of $S$ and let $\textbf{F}$ be a $C^1$ vector field on $S$. Then
+\[
+	\iint_s (\nabla \times \textbf{F}) \cdot d \textbf{S} = \int_{\partial S} \textbf{F} \cdot d \textbf{s}
+\]
+
 
 \chapter{Linear Algebra}
 
@@ -196,14 +229,20 @@ Any non-zero complex number $z$ can be written in polar form
 \]
 From here, we obtain the observation that if $z$ and $w$ are complex numbers, we have that their multiplication is:
 \[
- zw = rse^{ i (\theta + \phi)
+ zw = rse^{ i (\theta + \phi) }
 \]
 so multiplication by a complex number corresponds to a homothety in the plane.
 
 \subsection{Convergence}
 
+A sequence $\setbraces{z_1,z_2, \ldots} $ of complex numbers is said to converge to $w$ if
+\[
+	\lim_{n \goesto \infty} | z_n - w | = 0 
+\]
 
+Since absolute values in $\CC$ and Euclidean distances in the plane coincide, we see that $z_n$ converges to $w$ if and only if the corresponding sequence of points in ht complex plane converges to the point that correspond to $w$
 
+In fact the sequence $\setbraces{z_n}$ converges to $w$ if and only if the sequence of real and imaginary parts of $z_n$ converge to the real and imaginary parts of $w$, respectively
 
 
 \end{document}
